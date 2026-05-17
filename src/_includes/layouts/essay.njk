@@ -1,0 +1,24 @@
+---
+layout: base.njk
+---
+
+<article class="essay-single">
+  <header class="essay-header">
+    <div class="essay-label">ESSAY</div>
+    <h1 class="essay-title">{{ title }}</h1>
+    {% if date %}
+    <time class="essay-date" datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
+    {% endif %}
+    {% if description %}
+    <p class="essay-lead">{{ description }}</p>
+    {% endif %}
+  </header>
+
+  <div class="essay-body">
+    {{ content | safe }}
+  </div>
+
+  <footer class="essay-footer">
+    <a href="/" class="back-link">← back to all essays</a>
+  </footer>
+</article>

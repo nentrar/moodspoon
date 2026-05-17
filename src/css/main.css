@@ -1,0 +1,482 @@
+/* =============================================
+   MOODSPOON — EDITORIAL BRUTALIST
+   Inspired by: raw editorial zine aesthetic
+   ============================================= */
+
+:root {
+  --green: #D4E5D4;
+  --green-dark: #9CAF88;
+  --black: #2C2C2C;
+  --off-white: #F5F5F0 ;
+  --gray: #000;
+  --font-stamp: 'Special Elite', serif;       
+  --font-body: 'IM Fell English', serif;       
+  --font-mono: 'Space Mono', monospace;        
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  background: var(--off-white);
+  color: var(--black);
+}
+
+body {
+  font-family: var(--font-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--off-white);
+  /* subtle paper grain */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =============================================
+   HEADER
+   ============================================= */
+
+.site-header {
+  text-align: center;
+  padding: 3rem 2rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  margin-bottom: 4rem;
+}
+
+.header-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.header-tagline {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--gray);
+  letter-spacing: 0.02em;
+}
+
+.logo-link {
+  display: block;
+}
+
+.logo-wrap {
+  position: relative;
+  display: inline-block;
+  width: 180px;
+  height: 140px;
+}
+
+.logo-scribble {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.logo-text {
+  font-family: var(--font-stamp);
+  font-size: 3.2rem;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  /* slight skew for stamped feel */
+  transform: translate(-50%, -50%) rotate(-1.5deg);
+}
+
+.logo-link:hover .logo-text {
+  transform: translate(-50%, -50%) rotate(0.5deg);
+  transition: transform 0.3s ease;
+}
+
+.header-sub {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--gray);
+  letter-spacing: 0.01em;
+}
+
+/* =============================================
+   NAV
+   ============================================= */
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 0 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+}
+
+.nav-link {
+  color: var(--black);
+  transition: color 0.15s;
+}
+
+.nav-link:hover {
+  color: var(--green-dark);
+}
+
+.nav-link.active {
+  background: var(--green);
+  color: var(--black);
+  padding: 0.15em 0.5em;
+}
+
+.nav-sep {
+  color: var(--gray);
+  font-size: 0.65rem;
+}
+
+/* =============================================
+   MAIN
+   ============================================= */
+
+.site-main {
+  flex: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+  width: 100%;
+}
+
+/* =============================================
+   ESSAYS LIST — THE CARDS
+   ============================================= */
+
+.essays-grid {
+  display: grid;
+  /* Two columns, intentionally not equal — left slightly wider */
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem 4rem;
+}
+
+/* Every 3rd card spans a different width for variety */
+.essay-card:nth-child(3n+1) {
+  grid-column: span 2;
+}
+
+.essay-card-link {
+  display: block;
+  cursor: pointer;
+}
+
+.essay-card-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--gray);
+  margin-bottom: 0.5rem;
+}
+
+.essay-card-title {
+  font-family: var(--font-stamp);
+  font-size: 2.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  background: var(--green);
+  display: inline;
+  padding: 0.1em 0.35em;
+  /* Slight inline irregularity */
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: background 0.15s;
+}
+
+.essay-card-link:hover .essay-card-title {
+  background: var(--black);
+  color: var(--green);
+}
+
+.essay-card-desc {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  color: var(--gray);
+  margin-top: 0.8rem;
+  line-height: 1.6;
+  text-transform: uppercase;
+  max-width: 42ch;
+}
+
+.essay-card-date {
+  display: block;
+  margin-top: 1rem;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--gray);
+}
+
+/* wide card — first, every 3rd */
+.essay-card:nth-child(3n+1) .essay-card-title {
+  font-size: 2.6rem;
+}
+
+/* =============================================
+   EMPTY STATE
+   ============================================= */
+
+.empty-state {
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.empty-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--gray);
+}
+
+/* =============================================
+   SINGLE ESSAY
+   ============================================= */
+
+.essay-single {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.essay-header {
+  margin-bottom: 3.5rem;
+}
+
+.essay-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: var(--gray);
+  margin-bottom: 0.75rem;
+}
+
+.essay-title {
+  font-family: var(--font-stamp);
+  font-size: 3rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.essay-date {
+  display: block;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--gray);
+  margin-bottom: 1.5rem;
+}
+
+.essay-lead {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+  line-height: 1.7;
+  border-left: 3px solid var(--green);
+  padding-left: 1rem;
+  max-width: 50ch;
+}
+
+/* Essay body typography */
+
+.essay-body {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  font-family: var(--font-body);
+}
+
+.essay-body p {
+  margin-bottom: 1.6em;
+}
+
+.essay-body p:first-child::first-letter {
+  font-family: var(--font-stamp);
+  font-size: 4.2rem;
+  line-height: 0.75;
+  float: left;
+  margin-right: 0.1em;
+  margin-top: 0.1em;
+  color: var(--black);
+}
+
+.essay-body h2 {
+  font-family: var(--font-stamp);
+  font-size: 1.5rem;
+  margin: 2.5em 0 0.8em;
+  letter-spacing: -0.01em;
+}
+
+.essay-body h3 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 2em 0 0.6em;
+  color: var(--gray);
+}
+
+.essay-body blockquote {
+  border-left: 3px solid var(--green);
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  margin: 2em 0;
+  font-style: italic;
+  color: #333;
+}
+
+.essay-body strong {
+  font-weight: bold;
+  background: var(--green);
+  padding: 0 0.2em;
+}
+
+.essay-body em {
+  font-style: italic;
+}
+
+.essay-body hr {
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.12);
+  margin: 2.5em 0;
+}
+
+/* =============================================
+   ESSAY FOOTER
+   ============================================= */
+
+.essay-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.back-link {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray);
+  transition: color 0.15s;
+}
+
+.back-link:hover {
+  color: var(--black);
+}
+
+/* =============================================
+   SITE FOOTER
+   ============================================= */
+
+.site-footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.footer-mark {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  color: var(--gray);
+}
+
+.footer-copy {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media (max-width: 640px) {
+  .logo-text {
+    font-size: 2.4rem;
+  }
+
+  .essays-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .essay-card:nth-child(3n+1) {
+    grid-column: span 1;
+  }
+
+  .essay-card:nth-child(3n+1) .essay-card-title {
+    font-size: 1.9rem;
+  }
+
+  .essay-title {
+    font-size: 2.1rem;
+  }
+
+  .site-main {
+    padding: 0 1.25rem 4rem;
+  }
+
+  .site-header {
+    padding: 2rem 1.25rem 0;
+  }
+}
+
+/* =============================================
+   LOAD ANIMATION — stagger in
+   ============================================= */
+
+.essay-card {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp 0.5s ease forwards;
+}
+
+.essay-card:nth-child(1) { animation-delay: 0.05s; }
+.essay-card:nth-child(2) { animation-delay: 0.12s; }
+.essay-card:nth-child(3) { animation-delay: 0.19s; }
+.essay-card:nth-child(4) { animation-delay: 0.26s; }
+.essay-card:nth-child(5) { animation-delay: 0.33s; }
+.essay-card:nth-child(6) { animation-delay: 0.40s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.essay-single {
+  animation: fadeUp 0.4s ease 0.05s both;
+}

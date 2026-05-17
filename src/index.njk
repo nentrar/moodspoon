@@ -1,0 +1,27 @@
+---
+layout: base.njk
+title: Essays
+---
+
+<section class="essays-list">
+  {% if collections.essays.length == 0 %}
+  <div class="empty-state">
+    <p class="empty-text">first essay coming soon.</p>
+  </div>
+  {% else %}
+  <div class="essays-grid">
+    {% for essay in collections.essays %}
+    <article class="essay-card">
+      <a href="{{ essay.url }}" class="essay-card-link">
+        <div class="essay-card-label">ESSAY</div>
+        <h2 class="essay-card-title">{{ essay.data.title }}</h2>
+        {% if essay.data.description %}
+        <p class="essay-card-desc">{{ essay.data.description }}</p>
+        {% endif %}
+        <time class="essay-card-date" datetime="{{ essay.date | htmlDateString }}">{{ essay.date | readableDate }}</time>
+      </a>
+    </article>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>

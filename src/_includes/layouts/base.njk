@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if title %}{{ title }} — {% endif %}MoodSpoon</title>
+  <meta name="description" content="{% if description %}{{ description }}{% else %}People, feelings, stories. Essays by MoodSpoon.{% endif %}">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=IM+Fell+English:ital@0;1&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="header-tagline">quiet thoughts of everyday life</p>
+      <a href="/" class="logo-link">
+        <div class="logo-wrap">
+          <svg class="logo-scribble" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M100,80 C60,20 20,60 40,100 C60,140 140,140 160,100 C180,60 140,20 100,80 Z" fill="none" stroke="#a8ff00" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.6"/>
+            <path d="M100,75 C55,10 15,55 38,98 C61,141 139,141 162,98 C185,55 145,10 100,75 Z" fill="none" stroke="#a8ff00" stroke-width="1" stroke-dasharray="6,4" opacity="0.4"/>
+            <path d="M100,85 C65,30 25,65 42,102 C59,139 141,139 158,102 C175,65 135,30 100,85 Z" fill="none" stroke="#a8ff00" stroke-width="0.8" stroke-dasharray="3,5" opacity="0.5"/>
+          </svg>
+          <span class="logo-text">MOOD<br>SPOON</span>
+        </div>
+      </a>
+    </div>
+
+    <nav class="site-nav">
+      <a href="/" class="nav-link {% if page.url == '/' %}active{% endif %}">ESSAYS</a>
+      <span class="nav-sep">//</span>
+      <a href="/about/" class="nav-link {% if page.url == '/about/' %}active{% endif %}">ABOUT</a>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-mark">— MOODSPOON —</span>
+      <p class="footer-copy">&copy 2026</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
